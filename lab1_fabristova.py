@@ -25,7 +25,7 @@ def triangle_info(s1, s2, s3):
         a, b, c = float(s1), float(s2), float(s3)
     except (ValueError, TypeError):
         logging.error(f"Нечисловые данные: ({s1}, {s2}, {s3})")
-        logging.exception("Трассировка:")
+        logging.exception("Трассировкаа:")
         return "", [(-2, -2), (-2, -2), (-2, -2)]
 
     if a <= 0 or b <= 0 or c <= 0 or a + b <= c or a + c <= b or b + c <= a:
