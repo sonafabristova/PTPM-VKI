@@ -13,7 +13,7 @@ class TestDeliveryValidation(unittest.TestCase):
     def test_weight_below_minimum_returns_error(self):          #  OK
         cost, date = calculate_delivery_cost(0.05, 100, "обычный")
         self.assertEqual(cost, -1)
-        self.assertEqual(date, "0000-00-00")
+        self.assertEqual(date, "000 0-00-00")
 
     def test_weight_zero_returns_error(self):                   #  OK
         cost, date = calculate_delivery_cost(0.0, 100, "обычный")
@@ -105,21 +105,21 @@ class TestDeliveryExpress(unittest.TestCase):
 
     def test_express_should_be_more_expensive_than_regular(self):   # АААААААААА
         # AssertionError: 350 not greater than 700
-        # Причина: в delivery_service.py строка `total_cost *= 0.5`
+        # в delivery_service.py строка `total_cost *= 0.5`
         regular_cost, _ = calculate_delivery_cost(2.0, 100, "обычный", is_express=False)
         express_cost, _ = calculate_delivery_cost(2.0, 100, "обычный", is_express=True)
         self.assertGreater(express_cost, regular_cost)
 
     def test_express_cost_is_not_half_of_regular(self):             # АААААААААА
         # AssertionError: 350 == 350
-        # Причина: та же строка `total_cost *= 0.5`
+        # та же строка `total_cost *= 0.5`
         regular_cost, _ = calculate_delivery_cost(2.0, 100, "обычный")
         express_cost, _ = calculate_delivery_cost(2.0, 100, "обычный", is_express=True)
         self.assertNotEqual(express_cost, regular_cost // 2)
 
     def test_express_delivery_at_least_one_day(self):               #  ААААААААААА
         # AssertionError: '2026-09-03' == '2026-09-03'
-        # Причина: в delivery_service.py строка `days_needed = days_needed // 2`
+        #  в delivery_service.py строка `days_needed = days_needed // 2`
         # (при days_needed = 1 получается 0, доставка в день отправки)
         _, date = calculate_delivery_cost(2.0, 100, "обычный", is_express=True)
         self.assertNotEqual(date, "2026-09-03")
@@ -131,7 +131,7 @@ class TestDeliveryExpress(unittest.TestCase):
 
 
 class TestDeliveryDates(unittest.TestCase):
-    """Логика расчёта даты."""
+
 
     def test_short_distance_delivers_in_one_day(self):          #  OK
         _, date = calculate_delivery_cost(2.0, 100, "обычный")
@@ -155,7 +155,7 @@ class TestDeliveryDates(unittest.TestCase):
 
 
 class TestDeliveryCombinations(unittest.TestCase):
-    """Комбинации параметров."""
+
 
     def test_fragile_and_express_combination(self):
         # weight=10, distance=100, хрупкий, экспресс

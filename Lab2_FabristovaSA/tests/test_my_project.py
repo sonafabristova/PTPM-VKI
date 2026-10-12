@@ -7,7 +7,7 @@ from src.my_project import triangle_info, calculate_coordinates
 
 class TestTriangleInfo(unittest.TestCase):
 
-    # --- Равносторонний ---
+    #  Равносторонний
     def test_equilateral_triangle_sides_3_3_3(self):
         kind, coords = triangle_info("3", "3", "3")
         self.assertEqual(kind, "равносторонний")
@@ -20,7 +20,7 @@ class TestTriangleInfo(unittest.TestCase):
         kind, _ = triangle_info("2.5", "2.5", "2.5")
         self.assertEqual(kind, "равносторонний")
 
-    # --- Равнобедренный ---
+    #  Равнобедренный
     def test_isosceles_triangle_ab_equal(self):
         kind, _ = triangle_info("3", "3", "5")
         self.assertEqual(kind, "равнобедренный")
@@ -33,7 +33,7 @@ class TestTriangleInfo(unittest.TestCase):
         kind, _ = triangle_info("3", "5", "3")
         self.assertEqual(kind, "равнобедренный")
 
-    # --- Разносторонний ---
+    # Разносторонний
     def test_scalene_triangle_3_4_5(self):
         kind, _ = triangle_info("3", "4", "5")
         self.assertEqual(kind, "разносторонний")
@@ -42,7 +42,7 @@ class TestTriangleInfo(unittest.TestCase):
         kind, _ = triangle_info("10", "12", "15")
         self.assertEqual(kind, "разносторонний")
 
-    # --- Не треугольник ---
+    #  Не треугольник
     def test_not_triangle_sum_too_small(self):
         kind, coords = triangle_info("1", "2", "10")
         self.assertEqual(kind, "не треугольник")
@@ -62,7 +62,7 @@ class TestTriangleInfo(unittest.TestCase):
         kind, _ = triangle_info("1", "2", "3")
         self.assertEqual(kind, "не треугольник")
 
-    # --- Нечисловые данные ---
+    #  Нечисловые данные
     def test_non_numeric_first_string(self):
         kind, coords = triangle_info("abc", "4", "5")
         self.assertEqual(kind, "")
@@ -83,7 +83,7 @@ class TestTriangleInfo(unittest.TestCase):
         self.assertEqual(kind, "")
         self.assertEqual(coords, [(-2, -2), (-2, -2), (-2, -2)])
 
-    # --- Координаты: в поле 100x100 ---
+    #  Координаты: в поле
     def test_coordinates_within_field(self):
         _, coords = triangle_info("3", "4", "5")
         for x, y in coords:
@@ -106,7 +106,7 @@ class TestTriangleInfo(unittest.TestCase):
         # A и B на одной горизонтали
         self.assertEqual(coords[0][1], coords[1][1])
 
-    # --- Пограничные длины ---
+    # Пограничные длины
     def test_very_small_sides(self):
         kind, _ = triangle_info("0.1", "0.1", "0.1")
         self.assertEqual(kind, "равносторонний")
@@ -119,7 +119,7 @@ class TestTriangleInfo(unittest.TestCase):
         kind, _ = triangle_info("100", "200", "250")
         self.assertEqual(kind, "разносторонний")
 
-    # --- calculate_coordinates напрямую ---
+    #  calculate_coordinates
     def test_calculate_coordinates_returns_three_points(self):
         coords = calculate_coordinates(3, 4, 5)
         self.assertEqual(len(coords), 3)
