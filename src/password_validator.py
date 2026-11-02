@@ -1,6 +1,6 @@
 def validate_password(password: str) -> bool:
 
-    # --- Этап 1. Проверка исключений ---
+    # --- Здесь будет веселуха по срезовой. Проверка исключений ---
     if not isinstance(password, str):
         raise TypeError("Пароль должен быть строкой")
 
