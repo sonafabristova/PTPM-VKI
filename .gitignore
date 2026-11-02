@@ -1,0 +1,28 @@
+# Виртуальное окружение
+venv/
+.venv/
+env/
+ENV/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Отчеты о покрытии кода (Coverage)
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+*.cover
+
+# Настройки IDE
+.idea/
+.vscode/
+*.iml
+
+# Логи и базы данных
+logs/
+*.log
+*.db
+*.sqlite
