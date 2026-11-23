@@ -1,0 +1,26 @@
+# Виртуальное окружение
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# БД
+*.db
+*.sqlite
+*.sqlite3
+
+# PyCharm
+.idea/
+*.iml
+
+# ОС
+.DS_Store
+Thumbs.db
+
+# Логи
+*.log
